@@ -1,4 +1,4 @@
-import { LegalLayout, H2, P, UL, Updated } from "./LegalLayout";
+import { LegalLayout, H2, P, UL, Updated } from "@/components/dentassiste/legal/LegalLayout";
 
 export default function PrivacidadePage() {
   return (
