@@ -65,10 +65,20 @@ export function FormModal({ onClose }: FormModalProps) {
         return partes.join(" | ");
       }).join("\n");
 
+      const encode = (data: Record<string, string>) =>
+        Object.entries(data)
+          .map(([k, v]) => `${encodeURIComponent(k)}=${encodeURIComponent(v)}`)
+          .join("&");
+
+      const encode = (data: Record<string, string>) =>
+        Object.entries(data)
+          .map(([k, v]) => `${encodeURIComponent(k)}=${encodeURIComponent(v)}`)
+          .join("&");
+
       await fetch("/", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams({
+        body: encode({
           "form-name": "pedido-recolha",
           nome,
           clinica,
@@ -79,7 +89,7 @@ export function FormModal({ onClose }: FormModalProps) {
           localidade,
           observacoes,
           instrumentos: instrumentosTexto,
-        }).toString(),
+        }),
       });
 
       setSubmitted(true);
