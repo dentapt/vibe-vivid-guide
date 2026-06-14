@@ -65,7 +65,6 @@ export const SERVICES_LIST: { icon: LucideIcon; title: string; desc: string }[] 
   { icon: Cog, title: "Contra-Ângulos", desc: "Limpeza, verificação e reparação. Avarias diagnosticadas antes de qualquer intervenção." },
   { icon: Wrench, title: "Micromotores", desc: "Diagnóstico técnico e reparação. Orçamento apresentado antes de iniciar os trabalhos." },
   { icon: Truck, title: "Recolha e entrega incluídas", desc: "Nas reparações de turbinas, a recolha na clínica e a entrega após reparação estão incluídas no preço." },
-  { icon: FileText, title: "Relatório técnico", desc: "Cada equipamento é devolvido com relatório descritivo da intervenção realizada." },
   { icon: Search, title: "Orçamento antes da intervenção", desc: "Nunca iniciamos uma reparação sem informar o valor. Sem surpresas na fatura." },
   { icon: Stethoscope, title: "Peças de Mão Retas", desc: "Diagnóstico e reparação de peças de mão retas. Orçamento apresentado antes de qualquer intervenção." },
 ];
