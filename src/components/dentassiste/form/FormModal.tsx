@@ -107,7 +107,7 @@ export function FormModal({ onClose }: FormModalProps) {
         <input type="text" name="codPostal" />
         <input type="text" name="localidade" />
         <textarea name="observacoes" />
-        <textarea name="instrumentos" />
+        <textarea name="equipamento" />
       </form>
 
       <div
