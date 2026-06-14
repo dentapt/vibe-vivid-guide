@@ -76,6 +76,7 @@ export function FormModal({ onClose }: FormModalProps) {
       formData.append("localidade", localidade);
       formData.append("observacoes", observacoes);
       formData.append("instrumentos", instrumentosTexto);
+      console.log("INSTRUMENTOS:", instrumentosTexto);
 
       await fetch("/", {
         method: "POST",
