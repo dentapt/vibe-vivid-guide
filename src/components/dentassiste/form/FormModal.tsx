@@ -37,7 +37,6 @@ export function FormModal({ onClose }: FormModalProps) {
   const step1Valid = nome && clinica && telefone && email && morada && codPostal && localidade && rgpd;
   const canAdvance = step === 0 ? step0Valid : step === 1 ? step1Valid : true;
 
-  // Submete para Netlify Forms
   const handleSubmit = async () => {
     setSending(true);
     try {
@@ -54,6 +53,7 @@ export function FormModal({ onClose }: FormModalProps) {
       const SERVICE_LABEL: Record<string, string> = {
         "reparacao": "Reparação", "limpeza-broca": "Limpeza / Broca presa",
       };
+
       const instrumentosTexto = instruments.map((i, idx) => {
         const partes = [`Instrumento ${idx + 1}: ${TIPO_LABEL[i.type] || i.type}`];
         if (i.brand) partes.push(`Marca: ${BRAND_LABEL[i.brand] || i.brand}`);
@@ -65,22 +65,21 @@ export function FormModal({ onClose }: FormModalProps) {
         return partes.join(" | ");
       }).join("\n");
 
-      const formData = new FormData();
-      formData.append("form-name", "pedido-recolha");
-      formData.append("nome", nome);
-      formData.append("clinica", clinica);
-      formData.append("telefone", telefone);
-      formData.append("email", email);
-      formData.append("morada", morada);
-      formData.append("codPostal", codPostal);
-      formData.append("localidade", localidade);
-      formData.append("observacoes", observacoes);
-      formData.append("instrumentos", instrumentosTexto);
-      console.log("INSTRUMENTOS:", instrumentosTexto);
-
       await fetch("/", {
         method: "POST",
-        body: formData,
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams({
+          "form-name": "pedido-recolha",
+          nome,
+          clinica,
+          telefone,
+          email,
+          morada,
+          codPostal,
+          localidade,
+          observacoes,
+          instrumentos: instrumentosTexto,
+        }).toString(),
       });
 
       setSubmitted(true);
