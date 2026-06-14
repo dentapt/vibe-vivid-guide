@@ -5,7 +5,7 @@ export function BrandsSection() {
     <section id="marcas" className="border-t border-border bg-background py-16">
       <div className="container max-w-5xl text-center">
         <div className="mb-8 text-xs font-bold uppercase tracking-[0.25em] text-muted-foreground">
-          Trabalhamos com todas as marcas
+          Trabalhamos com as principais marcas
         </div>
         <div className="flex flex-wrap items-center justify-center gap-3">
           {BRANDS_LOGOS.map((b) => (

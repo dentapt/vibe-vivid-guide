@@ -55,7 +55,7 @@ export const CA_SERVICES: ServiceDef[] = [
   { id: "reparacao", label: "Reparação / Avaria", desc: "Valor apurado após diagnóstico técnico", icon: Wrench, getPrice: () => null, priceLabel: () => null },
 ];
 
-export const TURBINE_SYMPTOMS = ["Sem rotação", "Rotação lenta", "Vibração excessiva", "Ruído anormal", "Fuga de ar", "Não segura a broca", "Aquecimento", "Outro"];
+export const TURBINE_SYMPTOMS = ["Não segura a broca", "Sem rotação", "Rotação lenta", "Vibração excessiva", "Ruído anormal", "Outro"];
 export const CA_SYMPTOMS = ["Sem rotação", "Rotação irregular", "Ruído anormal", "Vibração", "Peça solta", "Aquecimento", "Outro"];
 export const MM_SYMPTOMS = ["Sem funcionamento", "Perda de potência", "Aquecimento", "Ruído", "Problemas elétricos", "Outro"];
 export const PM_SYMPTOMS = ["Sem rotação", "Rotação irregular", "Ruído anormal", "Vibração", "Aquecimento", "Peça solta", "Outro"];
