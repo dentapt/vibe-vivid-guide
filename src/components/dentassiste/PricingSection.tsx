@@ -25,7 +25,7 @@ export function PricingSection({ onForm }: PricingSectionProps) {
             Sem surpresas
           </h2>
           <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-            Informamos sempre o valor antes de iniciar qualquer intervenção.
+            Informamos o valor antes de iniciar qualquer intervenção.
           </p>
         </div>
 
