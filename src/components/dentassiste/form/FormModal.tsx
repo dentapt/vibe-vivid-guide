@@ -83,7 +83,7 @@ export function FormModal({ onClose }: FormModalProps) {
           codPostal,
           localidade,
           observacoes,
-          instrumentos: instrumentosTexto,
+          equipamento: instrumentosTexto,
         }),
       });
 
