@@ -41,9 +41,29 @@ export function FormModal({ onClose }: FormModalProps) {
   const handleSubmit = async () => {
     setSending(true);
     try {
-      const instrumentosTexto = instruments
-        .map((i) => `${i.type} ${i.brand ? "(" + i.brand + ")" : ""} ${i.model ? "Modelo: " + i.model : ""} ${i.serial ? "SN: " + i.serial : ""}`)
-        .join(" | ");
+      const TIPO_LABEL: Record<string, string> = {
+        "turbina": "Turbina",
+        "contra-angulo": "Contra-Ângulo",
+        "micromotor": "Micromotor",
+        "peca-mao-reta": "Peça de Mão Reta",
+      };
+      const BRAND_LABEL: Record<string, string> = {
+        "kavo": "KaVo", "nsk": "NSK", "wh": "W&H", "bienair": "Bien-Air",
+        "sirona": "Sirona", "mkdent": "MK-dent", "soco": "Soco", "coxo": "Coxo",
+      };
+      const SERVICE_LABEL: Record<string, string> = {
+        "reparacao": "Reparação", "limpeza-broca": "Limpeza / Broca presa",
+      };
+      const instrumentosTexto = instruments.map((i, idx) => {
+        const partes = [`Instrumento ${idx + 1}: ${TIPO_LABEL[i.type] || i.type}`];
+        if (i.brand) partes.push(`Marca: ${BRAND_LABEL[i.brand] || i.brand}`);
+        if (i.serviceId) partes.push(`Serviço: ${SERVICE_LABEL[i.serviceId] || i.serviceId}`);
+        if (i.model) partes.push(`Modelo: ${i.model}`);
+        if (i.serial) partes.push(`Nº Série: ${i.serial}`);
+        if (i.problems.length > 0) partes.push(`Sintomas: ${i.problems.join(", ")}`);
+        if (i.problemOther) partes.push(`Outro sintoma: ${i.problemOther}`);
+        return partes.join(" | ");
+      }).join("\n");
 
       const formData = new FormData();
       formData.append("form-name", "pedido-recolha");
