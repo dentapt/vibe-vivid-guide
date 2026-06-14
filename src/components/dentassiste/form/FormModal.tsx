@@ -70,11 +70,6 @@ export function FormModal({ onClose }: FormModalProps) {
           .map(([k, v]) => `${encodeURIComponent(k)}=${encodeURIComponent(v)}`)
           .join("&");
 
-      const encode = (data: Record<string, string>) =>
-        Object.entries(data)
-          .map(([k, v]) => `${encodeURIComponent(k)}=${encodeURIComponent(v)}`)
-          .join("&");
-
       await fetch("/", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
