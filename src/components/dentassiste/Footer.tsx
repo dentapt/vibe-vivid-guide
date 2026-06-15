@@ -5,7 +5,7 @@ export function Footer() {
   return (
     <footer className="bg-primary-deep">
       <div className="container py-14">
-        <div className="grid grid-cols-1 gap-10 md:grid-cols-3 md:justify-items-center max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-3 md text-center md:text-left:justify-items-center max-w-4xl mx-auto">
           <div>
             <div className="mb-4 flex items-center gap-3">
               <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-accent/15 ring-1 ring-accent/30">
