@@ -1,16 +1,15 @@
-import { Stethoscope, ExternalLink } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 import { Link } from "react-router-dom";
+import logo from "@/assets/logo-dentassiste.png";
 
 export function Footer() {
   return (
     <footer className="bg-primary-deep">
       <div className="container py-14">
-        <div className="grid grid-cols-1 gap-10 md:grid-cols-3 md text-center md:text-left:justify-items-center max-w-4xl mx-auto">
+        <div className="mx-auto grid max-w-4xl grid-cols-1 gap-10 text-center md:grid-cols-3 md:text-left">
           <div>
-            <div className="mb-4 flex items-center gap-3">
-              <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-accent/15 ring-1 ring-accent/30">
-                <Stethoscope className="h-5 w-5 text-accent" />
-              </div>
+            <div className="mb-4 flex items-center justify-center gap-3 md:justify-start">
+              <img src={logo} alt="Dentassiste" width={507} height={492} className="h-9 w-auto" />
               <div className="font-display text-base font-bold text-primary-foreground">Dentassiste</div>
             </div>
             <div className="text-sm leading-relaxed text-primary-foreground/55">
@@ -26,7 +25,9 @@ export function Footer() {
               Contacto
             </div>
             <div className="text-sm leading-relaxed text-primary-foreground/55">
-              938 936 586
+              <a href="tel:+351938936586" className="transition-colors hover:text-accent">
+                938 936 586
+              </a>
               <br />
               (chamada para rede móvel nacional)
               <br />
