@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import { ArrowLeft, Stethoscope } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
+import logo from "@/assets/logo-dentassiste.png";
 
 interface LegalLayoutProps {
   title: string;
@@ -12,9 +13,7 @@ export function LegalLayout({ title, children }: LegalLayoutProps) {
       <nav className="bg-primary-deep">
         <div className="container flex h-16 items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="flex h-8 w-8 items-center justify-center rounded-md bg-accent/15 ring-1 ring-accent/30">
-              <Stethoscope className="h-4 w-4 text-accent" />
-            </div>
+            <img src={logo} alt="Dentassiste" width={507} height={492} className="h-8 w-auto" />
             <Link to="/" className="font-display text-sm font-bold text-primary-foreground">Dentassiste</Link>
             <span className="text-primary-foreground/30">/</span>
             <span className="text-sm text-primary-foreground/60">{title}</span>
