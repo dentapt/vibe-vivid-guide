@@ -46,7 +46,7 @@ export type ServiceDef = {
 };
 
 export const TURBINE_SERVICES: ServiceDef[] = [
-  { id: "reparacao", label: "Reparação", desc: "Substituição de rotor e verificação funcional completa", icon: Settings2, note: "Garantia de 12 meses · Verificação antes da entrega", includesPickup: true },
+  { id: "reparacao", label: "Reparação", desc: "Substituição de rotor, limpeza completa e verificação funcional", icon: Settings2, note: "Garantia de 12 meses · Verificação antes da entrega", includesPickup: true },
   { id: "limpeza-broca", label: "Limpeza / Broca presa", desc: "Limpeza geral ou remoção de broca encravada", icon: SprayCan, getPrice: () => 45, priceLabel: () => "45€" },
 ];
 
@@ -61,7 +61,7 @@ export const MM_SYMPTOMS = ["Sem funcionamento", "Perda de potência", "Aquecime
 export const PM_SYMPTOMS = ["Sem rotação", "Rotação irregular", "Ruído anormal", "Vibração", "Aquecimento", "Peça solta", "Outro"];
 
 export const SERVICES_LIST: { icon: LucideIcon; title: string; desc: string }[] = [
-  { icon: Settings2, title: "Reparação de Turbinas", desc: "Substituição de rotor com componentes compatíveis de qualidade. Garantia de 12 meses incluída." },
+  { icon: Settings2, title: "Reparação de Turbinas", desc: "Substituição de rotor e limpeza completa, com componentes compatíveis de qualidade. Garantia de 12 meses incluída." },
   { icon: Cog, title: "Contra-Ângulos", desc: "Limpeza, verificação e reparação. Avarias diagnosticadas antes de qualquer intervenção." },
   { icon: Wrench, title: "Micromotores", desc: "Diagnóstico técnico e reparação. Orçamento apresentado antes de iniciar os trabalhos." },
   { icon: Truck, title: "Recolha e entrega incluídas", desc: "Nas reparações de turbinas, a recolha na clínica e a entrega após reparação estão incluídas no preço." },
