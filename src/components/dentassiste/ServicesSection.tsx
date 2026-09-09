@@ -10,7 +10,7 @@ export function ServicesSection() {
             Assistência técnica especializada
           </h2>
           <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-            Reparação multimarca com componentes compatíveis de qualidade e garantia incluída.
+            Reparação multimarca de instrumentos rotatórios dentários, com componentes compatíveis de qualidade e garantia incluída.
           </p>
         </div>
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
