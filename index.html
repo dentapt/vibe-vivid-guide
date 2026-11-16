@@ -29,6 +29,18 @@
 
   <body>
     <div id="root"></div>
+    <!-- Formulário estático: é assim que o Netlify Forms deteta o formulário no build -->
+    <form name="pedido-recolha" data-netlify="true" hidden>
+      <input type="text" name="nome" />
+      <input type="text" name="clinica" />
+      <input type="tel" name="telefone" />
+      <input type="email" name="email" />
+      <input type="text" name="morada" />
+      <input type="text" name="codPostal" />
+      <input type="text" name="localidade" />
+      <textarea name="observacoes"></textarea>
+      <textarea name="equipamento"></textarea>
+    </form>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
