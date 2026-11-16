@@ -47,11 +47,11 @@ export type ServiceDef = {
 
 export const TURBINE_SERVICES: ServiceDef[] = [
   { id: "reparacao", label: "Reparação", desc: "Substituição de rotor, limpeza completa e verificação funcional", icon: Settings2, note: "Garantia de 12 meses · Verificação antes da entrega", includesPickup: true },
-  { id: "limpeza-broca", label: "Limpeza / Broca presa", desc: "Limpeza geral ou remoção de broca encravada", icon: SprayCan, getPrice: () => 45, priceLabel: () => "45€" },
+  { id: "limpeza-broca", label: "Limpeza / Broca presa", desc: "Limpeza geral ou remoção de broca encravada", icon: SprayCan, getPrice: () => 45, priceLabel: () => "desde 45€" },
 ];
 
 export const CA_SERVICES: ServiceDef[] = [
-  { id: "limpeza-broca", label: "Limpeza / Broca presa", desc: "Limpeza geral ou remoção de broca encravada", icon: SprayCan, getPrice: () => 45, priceLabel: () => "45€" },
+  { id: "limpeza-broca", label: "Limpeza / Broca presa", desc: "Limpeza geral ou remoção de broca encravada", icon: SprayCan, getPrice: () => 45, priceLabel: () => "desde 45€" },
   { id: "reparacao", label: "Reparação / Avaria", desc: "Valor apurado após diagnóstico técnico", icon: Wrench, getPrice: () => null, priceLabel: () => null },
 ];
 
@@ -90,8 +90,13 @@ export function getInstPrice(inst: Instrument, nTurbines: number): number | null
   return null;
 }
 
+/** Nº de turbinas para reparação — só estas contam para o desconto de quantidade. */
+export function countRepairTurbines(instruments: Instrument[]) {
+  return instruments.filter((i) => i.type === "turbina" && i.serviceId === "reparacao").length;
+}
+
 export function calcTotal(instruments: Instrument[]) {
-  const nT = instruments.filter((i) => i.type === "turbina").length;
+  const nT = countRepairTurbines(instruments);
   let total = 0, hasKnown = false, hasUnknown = false;
   instruments.forEach((inst) => {
     const p = getInstPrice(inst, nT);

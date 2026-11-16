@@ -16,12 +16,9 @@ export function ServiceCard({ svc, selected, onClick, nTurbines, selectedBrand, 
   const isTurbineRepair = svc.id === "reparacao" && equipmentType === "turbina";
   const isLowCost = selectedBrand?.lowCost ?? false;
   const basePrice = isTurbineRepair ? (isLowCost ? 100 : 160) : null;
-  const displayPrice = isTurbineRepair
-    ? `${basePrice}€ / unidade`
-    : svc.priceLabel
-    ? svc.priceLabel(nTurbines)
-    : null;
-  const discountLine = isTurbineRepair && basePrice ? `${basePrice - 10}€ a partir de 2` : null;
+  const rawPrice = isTurbineRepair ? `${basePrice}€` : svc.priceLabel ? svc.priceLabel(nTurbines) : null;
+  const displayPrice = rawPrice ? rawPrice.replace(/^desde\s+/, "") : null;
+  const discountLine = isTurbineRepair && basePrice ? `desde ${basePrice - 10}€ com 2 ou mais` : null;
   const Icon = svc.icon;
   return (
     <div>
@@ -36,7 +33,7 @@ export function ServiceCard({ svc, selected, onClick, nTurbines, selectedBrand, 
           on && svc.note ? "rounded-t-lg" : "rounded-lg",
         )}
       >
-        <div className="flex items-center gap-3">
+        <div className="flex min-w-0 items-center gap-3">
           <div className={cn("flex h-9 w-9 shrink-0 items-center justify-center rounded-md", on ? "bg-accent text-accent-foreground" : "bg-muted text-muted-foreground")}>
             <Icon className="h-4.5 w-4.5" />
           </div>
@@ -45,16 +42,17 @@ export function ServiceCard({ svc, selected, onClick, nTurbines, selectedBrand, 
             <div className="text-[11px] leading-snug text-muted-foreground">{svc.desc}</div>
           </div>
         </div>
-        <div className="min-w-[100px] text-right">
+        <div className="shrink-0 text-right">
           {displayPrice ? (
             <>
-              <div>
+              <div className="text-[10px] leading-none text-muted-foreground">desde</div>
+              <div className="whitespace-nowrap">
                 <span className={cn("text-base font-extrabold", on ? "text-accent-dark" : "text-foreground")}>{displayPrice}</span>
-                <span className="text-[10px] text-muted-foreground"> +IVA</span>
+                <span className="text-[10px] text-muted-foreground">{isTurbineRepair ? " / un." : ""} +IVA</span>
               </div>
-              {discountLine && <div className="mt-0.5 text-[10px] text-muted-foreground">{discountLine}</div>}
+              {discountLine && <div className="mt-0.5 whitespace-nowrap text-[10px] text-muted-foreground">{discountLine}</div>}
               {isTurbineRepair && (
-                <div className="mt-1 inline-flex items-center gap-1 text-[10px] font-semibold text-accent">
+                <div className="mt-1 inline-flex items-center gap-1 whitespace-nowrap text-[10px] font-semibold text-accent">
                   <Truck className="h-3 w-3" /> Recolha incluída
                 </div>
               )}

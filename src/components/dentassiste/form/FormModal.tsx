@@ -2,7 +2,7 @@ import { useState } from "react";
 import { X, ArrowLeft, ArrowRight, Check, Truck, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { newInstrument, type Instrument } from "@/lib/dentassiste-data";
+import { newInstrument, countRepairTurbines, type Instrument } from "@/lib/dentassiste-data";
 import { ProgressStepper } from "./ProgressStepper";
 import { InstrumentCard } from "./InstrumentCard";
 import { PriceSummary } from "./PriceSummary";
@@ -27,8 +27,9 @@ export function FormModal({ onClose }: FormModalProps) {
   const [rgpd, setRgpd] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [sending, setSending] = useState(false);
+  const [sendError, setSendError] = useState(false);
 
-  const nTurbines = instruments.filter((i) => i.type === "turbina").length;
+  const nTurbines = countRepairTurbines(instruments);
   const upd = (id: number, v: Instrument) => setInst((p) => p.map((i) => (i.id === id ? v : i)));
   const rem = (id: number) => setInst((p) => p.filter((i) => i.id !== id));
   const add = () => setInst((p) => [...p, newInstrument()]);
@@ -39,6 +40,7 @@ export function FormModal({ onClose }: FormModalProps) {
 
   const handleSubmit = async () => {
     setSending(true);
+    setSendError(false);
     try {
       const TIPO_LABEL: Record<string, string> = {
         "turbina": "Turbina",
@@ -70,7 +72,7 @@ export function FormModal({ onClose }: FormModalProps) {
           .map(([k, v]) => `${encodeURIComponent(k)}=${encodeURIComponent(v)}`)
           .join("&");
 
-      await fetch("/", {
+      const res = await fetch("/", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: encode({
@@ -86,10 +88,12 @@ export function FormModal({ onClose }: FormModalProps) {
           equipamento: instrumentosTexto,
         }),
       });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
 
       setSubmitted(true);
     } catch (err) {
       console.error("Erro ao enviar formulário:", err);
+      setSendError(true);
     } finally {
       setSending(false);
     }
@@ -259,6 +263,13 @@ export function FormModal({ onClose }: FormModalProps) {
                     <div className="mt-3 rounded-lg border border-accent/30 bg-accent-soft px-3.5 py-2.5 text-xs leading-relaxed text-accent-dark">
                       Após o envio, entraremos em contacto para confirmar os detalhes e marcar a recolha.
                     </div>
+                  </div>
+                )}
+
+                {sendError && (
+                  <div role="alert" className="mt-4 rounded-lg border border-destructive/40 bg-destructive/10 px-3.5 py-2.5 text-sm leading-relaxed text-destructive">
+                    Não foi possível enviar o pedido. Tente novamente ou ligue-nos:{" "}
+                    <a href="tel:+351938936586" className="font-bold underline">938 936 586</a>.
                   </div>
                 )}
 

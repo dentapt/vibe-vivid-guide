@@ -1,11 +1,11 @@
 import { Truck } from "lucide-react";
 import {
   type Instrument, EQUIPMENT_TYPES, TURBINE_BRANDS, TURBINE_SERVICES, CA_SERVICES,
-  getInstPrice, calcTotal,
+  getInstPrice, calcTotal, countRepairTurbines,
 } from "@/lib/dentassiste-data";
 
 export function PriceSummary({ instruments }: { instruments: Instrument[] }) {
-  const nT = instruments.filter((i) => i.type === "turbina").length;
+  const nT = countRepairTurbines(instruments);
   const { total, hasKnown, hasUnknown } = calcTotal(instruments);
   const visible = instruments.filter(
     (i) => i.type && (i.type === "micromotor" || i.type === "peca-mao-reta" || i.serviceId),
@@ -27,7 +27,7 @@ export function PriceSummary({ instruments }: { instruments: Instrument[] }) {
           : null;
         const brandLabel = TURBINE_BRANDS.find((b) => b.id === inst.brand)?.label || inst.brand;
         const name = [eq?.label, brandLabel, svcLabel].filter(Boolean).join(" · ");
-        const ps = typeof p === "number" ? `${p}€` : "orçamento";
+        const ps = typeof p === "number" ? `desde ${p}€` : "orçamento";
         return (
           <div key={inst.id} className="mb-1 flex justify-between gap-3 text-xs opacity-85">
             <span className="flex-1">{name}</span>
@@ -37,7 +37,7 @@ export function PriceSummary({ instruments }: { instruments: Instrument[] }) {
       })}
       {nT >= 2 && (
         <div className="mt-3 rounded-md border border-accent/30 bg-accent/15 px-3 py-2 text-[11px] font-medium text-accent">
-          Desconto de 10€ por turbina aplicado (2 ou mais unidades)
+          Desconto de 10€ por turbina reparada aplicado (2 ou mais)
         </div>
       )}
       {hasTurbineRepair && (
@@ -49,7 +49,7 @@ export function PriceSummary({ instruments }: { instruments: Instrument[] }) {
         <div className="mt-3 flex items-baseline justify-between border-t border-primary-foreground/15 pt-3">
           <span className="text-xs opacity-55">{hasUnknown ? "Total parcial estimado" : "Total estimado"}</span>
           <span className="text-2xl font-extrabold">
-            {total}€<span className="text-xs font-normal opacity-50"> + IVA</span>
+            <span className="text-xs font-normal opacity-60">a partir de </span>{total}€<span className="text-xs font-normal opacity-50"> + IVA</span>
           </span>
         </div>
       )}

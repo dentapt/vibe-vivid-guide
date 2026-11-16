@@ -6,13 +6,13 @@ interface PricingSectionProps {
 }
 
 const featured = {
-  label: "Reparação de turbina", price: "160€", sub: "+ IVA · por unidade", note: "Recolha e entrega incluídas · Garantia 12 meses", highlight: true,
+  label: "Reparação de turbina", prefix: "A partir de", price: "160€", sub: "+ IVA · por unidade", note: "Recolha e entrega incluídas · Garantia 12 meses", highlight: true,
 };
 
 const rows = [
-  { label: "Turbina — marcas low-cost", price: "100€", sub: "+ IVA · por unidade", note: "Soco, Coxo e equivalentes" },
+  { label: "Turbina — marcas low-cost", prefix: "A partir de", price: "100€", sub: "+ IVA · por unidade", note: "Soco, Coxo e equivalentes" },
   { label: "2 ou mais turbinas", price: "−10€", sub: "por unidade", note: "Desconto aplicado a todas as turbinas do pedido", isDiscount: true },
-  { label: "Limpeza / Broca presa", price: "45€", sub: "+ IVA", note: "Turbinas e contra-ângulos" },
+  { label: "Limpeza / Broca presa", prefix: "A partir de", price: "45€", sub: "+ IVA", note: "Turbinas e contra-ângulos" },
   { label: "Contra-ângulo com avaria", price: "Orçamento", sub: "após diagnóstico", note: "Informamos o valor antes de intervir", isQuote: true },
   { label: "Micromotor", price: "Orçamento", sub: "após diagnóstico", note: "Informamos o valor antes de intervir", isQuote: true },
   { label: "Peça de Mão Reta", price: "Orçamento", sub: "após diagnóstico", note: "Informamos o valor antes de intervir", isQuote: true },
@@ -38,7 +38,10 @@ export function PricingSection({ onForm }: PricingSectionProps) {
             <div className="text-[11px] font-bold uppercase tracking-[0.15em] text-primary-foreground/60">
               {featured.label}
             </div>
-            <div className="mt-3 font-display text-5xl font-bold text-accent">
+            <div className="mt-3 text-xs font-semibold text-primary-foreground/70">
+              {featured.prefix}
+            </div>
+            <div className="mt-1 font-display text-5xl font-bold text-accent">
               {featured.price}
             </div>
             <div className="mt-1 text-xs text-primary-foreground/50">
@@ -60,8 +63,13 @@ export function PricingSection({ onForm }: PricingSectionProps) {
               <div className="text-[11px] font-bold uppercase tracking-[0.15em] text-muted-foreground">
                 {r.label}
               </div>
+              {r.prefix && (
+                <div className="mt-3 text-xs font-semibold text-muted-foreground">
+                  {r.prefix}
+                </div>
+              )}
               <div
-                className={`mt-3 font-display font-bold ${r.isQuote ? "text-xl italic" : "text-4xl"} ${
+                className={`${r.prefix ? "mt-1" : "mt-3"} font-display font-bold ${r.isQuote ? "text-xl italic" : "text-4xl"} ${
                   r.isDiscount ? "text-accent" : "text-foreground"
                 }`}
               >
