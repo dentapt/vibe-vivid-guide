@@ -1,9 +1,9 @@
-import { LegalLayout, H2, P, Note, Updated } from "@/components/dentassiste/legal/LegalLayout";
+import { LegalLayout, H2, P, UL, Note, Updated } from "@/components/dentassiste/legal/LegalLayout";
 
 export default function TermosPage() {
   return (
     <LegalLayout title="Termos e Condições">
-      <Updated date="Última atualização: maio de 2025" />
+      <Updated date="Última atualização: novembro de 2026" />
       <H2>1. Identificação da empresa</H2>
       <P><strong>Dentassiste Unipessoal Lda.</strong><br />NIF: 506 272 338 · Braga / Barcelos, Portugal<br />Telefone: 938 936 586</P>
 
@@ -16,17 +16,28 @@ export default function TermosPage() {
       <P>Nas reparações de turbinas, a recolha e a entrega estão incluídas no preço. Para outros equipamentos, o transporte é acordado caso a caso.</P>
       <P>O cliente é responsável por embalar o equipamento de forma adequada para o transporte, exceto se acordado de outra forma.</P>
 
-      <H2>4. Análise técnica e orçamento</H2>
+      <H2 id="orcamento">4. Análise técnica e orçamento</H2>
       <P>Após receção do equipamento, é realizada uma análise técnica. Quando o valor da intervenção não está fixado previamente, o cliente receberá um orçamento antes de qualquer trabalho ser iniciado.</P>
-      <P>A reparação só é realizada após confirmação expressa do cliente. Se o orçamento não for aceite, o equipamento é devolvido sem custos de análise, salvo acordo em contrário.</P>
+      <P>A reparação só é realizada após confirmação expressa do cliente.</P>
+      <P>Se o orçamento não for aceite, o equipamento é devolvido e são faturados o diagnóstico e o transporte: <strong>40€ + IVA</strong> nas turbinas e <strong>60€ + IVA</strong> nos contra-ângulos, micromotores e peças de mão retas.</P>
 
       <H2>5. Casos não reparáveis</H2>
       <P>Em alguns casos, o equipamento pode não ter solução técnica viável, nomeadamente por falta de peças, dano irreversível ou custo de reparação desproporcionado. Nestas situações, o cliente é informado e pode solicitar a devolução do equipamento no estado em que se encontra.</P>
 
-      <H2>6. Garantia</H2>
-      <P>As reparações de turbinas têm uma garantia de 12 meses a contar da data de entrega, cobrindo o trabalho realizado e os componentes substituídos.</P>
+      <H2 id="garantia">6. Garantia</H2>
+      <P>As reparações de turbinas têm garantia de 12 meses a contar da data de entrega, cobrindo o rotor e os rolamentos substituídos contra defeito.</P>
+      <P>Não estão cobertos danos resultantes de:</P>
+      <UL items={[
+        "falta de lubrificação;",
+        "ar do equipamento com humidade, óleo ou pressão excessiva;",
+        "brocas inadequadas ou danificadas;",
+        "quedas ou pancadas;",
+        "intervenção de outro técnico após a nossa reparação;",
+        "entupimentos ou falta de limpeza, que fazem parte da manutenção regular.",
+      ]} />
+      <P><strong>Como acionar a garantia:</strong> envie-nos um email para <a href="mailto:geral@dentassiste.com" className="font-semibold text-accent-dark underline-offset-2 hover:underline">geral@dentassiste.com</a>. Recolhemos o equipamento sem custo.</P>
+      <P>Se a avaria não estiver coberta pela garantia, é feito um diagnóstico e enviado orçamento. Se o orçamento não for aceite, aplica-se o previsto no ponto 4: são faturados o diagnóstico e o transporte (40€ + IVA nas turbinas).</P>
       <P>Para os restantes equipamentos, a garantia é definida e comunicada no momento do orçamento.</P>
-      <P>A garantia não cobre danos causados por utilização indevida, manutenção inadequada ou acidentes posteriores à entrega.</P>
 
       <H2>7. Transporte e responsabilidade</H2>
       <P>A Dentassiste assegura a coordenação da recolha e da entrega. Em caso de extravio ou dano durante o transporte sob responsabilidade da Dentassiste, o cliente será informado e será encontrada uma solução adequada.</P>

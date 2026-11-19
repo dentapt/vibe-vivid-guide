@@ -14,11 +14,6 @@ interface ServiceCardProps {
 export function ServiceCard({ svc, selected, onClick, nTurbines, selectedBrand, equipmentType }: ServiceCardProps) {
   const on = selected === svc.id;
   const isTurbineRepair = svc.id === "reparacao" && equipmentType === "turbina";
-  const isLowCost = selectedBrand?.lowCost ?? false;
-  const basePrice = isTurbineRepair ? (isLowCost ? 100 : 160) : null;
-  const rawPrice = isTurbineRepair ? `${basePrice}€` : svc.priceLabel ? svc.priceLabel(nTurbines) : null;
-  const displayPrice = rawPrice ? rawPrice.replace(/^desde\s+/, "") : null;
-  const discountLine = isTurbineRepair && basePrice ? `desde ${basePrice - 10}€ com 2 ou mais` : null;
   const Icon = svc.icon;
   return (
     <div>
@@ -42,25 +37,11 @@ export function ServiceCard({ svc, selected, onClick, nTurbines, selectedBrand, 
             <div className="text-[11px] leading-snug text-muted-foreground">{svc.desc}</div>
           </div>
         </div>
-        <div className="shrink-0 text-right">
-          {displayPrice ? (
-            <>
-              <div className="text-[10px] leading-none text-muted-foreground">desde</div>
-              <div className="whitespace-nowrap">
-                <span className={cn("text-base font-extrabold", on ? "text-accent-dark" : "text-foreground")}>{displayPrice}</span>
-                <span className="text-[10px] text-muted-foreground">{isTurbineRepair ? " / un." : ""} +IVA</span>
-              </div>
-              {discountLine && <div className="mt-0.5 whitespace-nowrap text-[10px] text-muted-foreground">{discountLine}</div>}
-              {isTurbineRepair && (
-                <div className="mt-1 inline-flex items-center gap-1 whitespace-nowrap text-[10px] font-semibold text-accent">
-                  <Truck className="h-3 w-3" /> Recolha incluída
-                </div>
-              )}
-            </>
-          ) : (
-            <span className="text-xs italic text-muted-foreground">sob orçamento</span>
-          )}
-        </div>
+        {isTurbineRepair && (
+          <div className="inline-flex shrink-0 items-center gap-1 whitespace-nowrap text-[10px] font-semibold text-accent">
+            <Truck className="h-3 w-3" /> Recolha incluída
+          </div>
+        )}
       </button>
       {on && svc.note && (
         <div className="flex items-center gap-2 rounded-b-lg border border-t-0 border-accent bg-accent-soft px-3.5 py-2 text-[11px] font-medium text-accent-dark">

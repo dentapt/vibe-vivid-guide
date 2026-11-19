@@ -1,4 +1,5 @@
-import { ArrowRight, Truck } from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
 interface PricingSectionProps {
@@ -6,13 +7,20 @@ interface PricingSectionProps {
 }
 
 const featured = {
-  label: "Reparação de turbina", prefix: "A partir de", price: "160€", sub: "+ IVA · por unidade", note: "Recolha e entrega incluídas · Garantia 12 meses", highlight: true,
+  label: "Reparação de turbina", price: "160€", sub: "+ IVA · por unidade", highlight: true,
+  includes: [
+    "Substituição do rotor com rolamentos cerâmicos",
+    "Limpeza completa",
+    "Testes de funcionamento",
+    "Recolha e entrega",
+  ],
+  extra: "Se forem necessárias peças adicionais, enviamos orçamento antes de intervir.",
 };
 
 const rows = [
-  { label: "Turbina — marcas low-cost", prefix: "A partir de", price: "100€", sub: "+ IVA · por unidade", note: "Soco, Coxo e equivalentes" },
+  { label: "Turbina — marcas low-cost", price: "100€", sub: "+ IVA · por unidade", note: "Mesmo serviço · Soco, Coxo e equivalentes" },
   { label: "2 ou mais turbinas", price: "−10€", sub: "por unidade", note: "Desconto aplicado a todas as turbinas do pedido", isDiscount: true },
-  { label: "Limpeza / Broca presa", prefix: "A partir de", price: "45€", sub: "+ IVA", note: "Turbinas e contra-ângulos" },
+  { label: "Limpeza / Broca presa", price: "45€", sub: "+ IVA", note: "Turbinas e contra-ângulos" },
   { label: "Contra-ângulo com avaria", price: "Orçamento", sub: "após diagnóstico", note: "Informamos o valor antes de intervir", isQuote: true },
   { label: "Micromotor", price: "Orçamento", sub: "após diagnóstico", note: "Informamos o valor antes de intervir", isQuote: true },
   { label: "Peça de Mão Reta", price: "Orçamento", sub: "após diagnóstico", note: "Informamos o valor antes de intervir", isQuote: true },
@@ -38,18 +46,33 @@ export function PricingSection({ onForm }: PricingSectionProps) {
             <div className="text-[11px] font-bold uppercase tracking-[0.15em] text-primary-foreground/60">
               {featured.label}
             </div>
-            <div className="mt-3 text-xs font-semibold text-primary-foreground/70">
-              {featured.prefix}
-            </div>
-            <div className="mt-1 font-display text-5xl font-bold text-accent">
+            <div className="mt-3 font-display text-5xl font-bold text-accent">
               {featured.price}
             </div>
             <div className="mt-1 text-xs text-primary-foreground/50">
               {featured.sub}
             </div>
-            <div className="mt-4 flex items-center justify-center gap-1.5 text-xs font-semibold leading-snug text-accent">
-              <Truck className="h-3.5 w-3.5" />
-              {featured.note}
+            <div className="mx-auto mt-6 max-w-xs border-t border-primary-foreground/10 pt-5 text-left">
+              <div className="mb-3 text-[11px] font-bold uppercase tracking-[0.15em] text-primary-foreground/60">
+                Inclui
+              </div>
+              <ul className="space-y-2">
+                {featured.includes.map((item) => (
+                  <li key={item} className="flex items-start gap-2 text-sm leading-snug text-primary-foreground/85">
+                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
+                    {item}
+                  </li>
+                ))}
+                <li className="flex items-start gap-2 text-sm leading-snug text-primary-foreground/85">
+                  <Check className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
+                  <Link to="/termos#garantia" className="underline decoration-primary-foreground/30 underline-offset-2 transition-colors hover:text-accent">
+                    Garantia de 12 meses
+                  </Link>
+                </li>
+              </ul>
+            </div>
+            <div className="mt-5 text-xs leading-relaxed text-primary-foreground/60">
+              {featured.extra}
             </div>
           </div>
         </div>
@@ -63,13 +86,8 @@ export function PricingSection({ onForm }: PricingSectionProps) {
               <div className="text-[11px] font-bold uppercase tracking-[0.15em] text-muted-foreground">
                 {r.label}
               </div>
-              {r.prefix && (
-                <div className="mt-3 text-xs font-semibold text-muted-foreground">
-                  {r.prefix}
-                </div>
-              )}
               <div
-                className={`${r.prefix ? "mt-1" : "mt-3"} font-display font-bold ${r.isQuote ? "text-xl italic" : "text-4xl"} ${
+                className={`mt-3 font-display font-bold ${r.isQuote ? "text-xl italic" : "text-4xl"} ${
                   r.isDiscount ? "text-accent" : "text-foreground"
                 }`}
               >
@@ -84,6 +102,14 @@ export function PricingSection({ onForm }: PricingSectionProps) {
             </div>
           ))}
         </div>
+
+        <p className="mx-auto mt-6 max-w-2xl text-center text-xs leading-relaxed text-muted-foreground">
+          Se não aceitar o orçamento, são faturados o diagnóstico e o transporte: 40€ + IVA nas turbinas e 60€ + IVA nos
+          contra-ângulos, micromotores e peças de mão retas.{" "}
+          <Link to="/termos#orcamento" className="font-semibold text-accent-dark underline-offset-2 hover:underline">
+            Ver condições
+          </Link>
+        </p>
 
         <div className="mt-12 text-center">
           <Button onClick={onForm} variant="hero" size="xl" className="group">

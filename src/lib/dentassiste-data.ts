@@ -12,6 +12,8 @@ export type Instrument = {
   serial: string;
   problems: string[];
   problemOther: string;
+  qty: number;
+  notes: string;
 };
 
 export const EQUIPMENT_TYPES: { id: Instrument["type"]; label: string; icon: LucideIcon; highlight?: boolean }[] = [
@@ -46,7 +48,7 @@ export type ServiceDef = {
 };
 
 export const TURBINE_SERVICES: ServiceDef[] = [
-  { id: "reparacao", label: "Reparação", desc: "Substituição de rotor, limpeza completa e verificação funcional", icon: Settings2, note: "Garantia de 12 meses · Verificação antes da entrega", includesPickup: true },
+  { id: "reparacao", label: "Reparação", desc: "Rotor com rolamentos cerâmicos, limpeza completa e testes", icon: Settings2, note: "Garantia de 12 meses · Verificação antes da entrega", includesPickup: true },
   { id: "limpeza-broca", label: "Limpeza / Broca presa", desc: "Limpeza geral ou remoção de broca encravada", icon: SprayCan, getPrice: () => 45, priceLabel: () => "desde 45€" },
 ];
 
@@ -107,7 +109,7 @@ export function calcTotal(instruments: Instrument[]) {
 }
 
 export function newInstrument(): Instrument {
-  return { id: Date.now() + Math.random(), type: "", brand: "", serviceId: "", model: "", serial: "", problems: [], problemOther: "" };
+  return { id: Date.now() + Math.random(), type: "", brand: "", serviceId: "", model: "", serial: "", problems: [], problemOther: "", qty: 1, notes: "" };
 }
 
 export const HERO_BADGES = [

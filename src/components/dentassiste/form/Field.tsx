@@ -11,7 +11,7 @@ export function Lbl({ children, optional }: { children: React.ReactNode; optiona
 }
 
 export function Field({
-  label, value, onChange, placeholder, optional, type = "text", half,
+  label, value, onChange, placeholder, optional, type = "text", half, error, autoComplete,
 }: {
   label?: string;
   value: string;
@@ -20,6 +20,8 @@ export function Field({
   optional?: boolean;
   type?: string;
   half?: boolean;
+  error?: string | false;
+  autoComplete?: string;
 }) {
   const [focused, setFocused] = useState(false);
   return (
@@ -30,13 +32,16 @@ export function Field({
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
+        autoComplete={autoComplete}
+        aria-invalid={!!error}
         onFocus={() => setFocused(true)}
         onBlur={() => setFocused(false)}
         className={cn(
           "w-full rounded-md border bg-card px-3 py-2.5 text-sm text-foreground outline-none transition-colors",
-          focused ? "border-accent ring-2 ring-accent/20" : "border-border",
+          focused ? "border-accent ring-2 ring-accent/20" : error ? "border-destructive" : "border-border",
         )}
       />
+      {error && <p className="mt-1 text-[11px] font-medium text-destructive">{error}</p>}
     </div>
   );
 }

@@ -1,4 +1,5 @@
-import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import logo from "@/assets/logo-dentassiste.png";
 
@@ -8,6 +9,11 @@ interface LegalLayoutProps {
 }
 
 export function LegalLayout({ title, children }: LegalLayoutProps) {
+  const { hash } = useLocation();
+  useEffect(() => {
+    if (hash) document.getElementById(hash.slice(1))?.scrollIntoView();
+    else window.scrollTo(0, 0);
+  }, [hash]);
   return (
     <div className="min-h-screen bg-background">
       <nav className="bg-primary-deep">
@@ -41,8 +47,8 @@ export function LegalLayout({ title, children }: LegalLayoutProps) {
   );
 }
 
-export function H2({ children }: { children: React.ReactNode }) {
-  return <h2 className="mb-2 mt-9 font-display text-xl font-bold text-accent-dark">{children}</h2>;
+export function H2({ children, id }: { children: React.ReactNode; id?: string }) {
+  return <h2 id={id} className="mb-2 mt-9 scroll-mt-6 font-display text-xl font-bold text-accent-dark">{children}</h2>;
 }
 export function P({ children }: { children: React.ReactNode }) {
   return <p className="mb-3 text-[15px] leading-relaxed text-foreground/80">{children}</p>;

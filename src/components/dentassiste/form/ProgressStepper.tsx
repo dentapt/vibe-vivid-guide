@@ -1,11 +1,11 @@
 import { Check } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-const STEPS = ["Equipamento", "Dados de contacto", "Confirmação"];
+const STEPS = ["Equipamento", "Contacto"];
 
 export function ProgressStepper({ step }: { step: number }) {
   return (
-    <div className="mb-7">
+    <div className="mb-6">
       <div className="mb-3 flex justify-between gap-2">
         {STEPS.map((s, i) => {
           const done = i < step;
