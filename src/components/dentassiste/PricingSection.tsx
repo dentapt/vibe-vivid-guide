@@ -20,7 +20,7 @@ const featured = {
 const rows = [
   { label: "Turbinas Coxo e Soco", price: "100€", sub: "+ IVA · por unidade", note: "Mesmo serviço incluído" },
   { label: "2 ou mais turbinas", price: "−10€", sub: "por unidade", note: "Desconto aplicado a todas as turbinas do pedido", isDiscount: true },
-  { label: "Limpeza / Broca presa", price: "45€", sub: "+ IVA", note: "Turbinas e contra-ângulos" },
+  { label: "Limpeza / Broca presa", price: "45€", sub: "+ IVA", note: "Turbinas, contra-ângulos e peças de mão retas" },
   { label: "Contra-ângulo com avaria", price: "Orçamento", sub: "após diagnóstico", note: "Diagnóstico gratuito", isQuote: true },
   { label: "Micromotor", price: "Orçamento", sub: "após diagnóstico", note: "Diagnóstico gratuito", isQuote: true },
   { label: "Peça de Mão Reta", price: "Orçamento", sub: "após diagnóstico", note: "Diagnóstico gratuito", isQuote: true },

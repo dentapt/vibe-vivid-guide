@@ -11,13 +11,17 @@ interface FormModalProps {
   onClose: () => void;
 }
 
-/** Serviços a escolher por tipo de equipamento (micromotor e peça de mão reta: só diagnóstico). */
+/** Serviços a escolher por tipo de equipamento (micromotor: só diagnóstico). */
 const SERVICE_OPTIONS: Record<string, { id: string; label: string }[]> = {
   turbina: [
     { id: "reparacao", label: "Reparação" },
     { id: "limpeza-broca", label: "Limpeza / Broca presa" },
   ],
   "contra-angulo": [
+    { id: "reparacao", label: "Reparação" },
+    { id: "limpeza-broca", label: "Limpeza / Broca presa" },
+  ],
+  "peca-mao-reta": [
     { id: "reparacao", label: "Reparação" },
     { id: "limpeza-broca", label: "Limpeza / Broca presa" },
   ],
@@ -382,7 +386,7 @@ function EquipmentRow({
             <textarea
               value={inst.notes}
               onChange={(e) => onChange({ ...inst, notes: e.target.value })}
-              placeholder="Marca, modelo ou o problema que notou"
+              placeholder="Ex.: KaVo 650 · SN 1234567 · não segura as brocas"
               rows={2}
               autoFocus
               className="w-full resize-y rounded-md border border-border bg-card px-3 py-2.5 text-sm text-foreground outline-none focus:border-accent focus:ring-2 focus:ring-accent/20"
