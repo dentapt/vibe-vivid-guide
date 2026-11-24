@@ -19,7 +19,8 @@ export default function TermosPage() {
       <H2 id="orcamento">4. Análise técnica e orçamento</H2>
       <P>Após receção do equipamento, é realizada uma análise técnica. Quando o valor da intervenção não está fixado previamente, o cliente receberá um orçamento antes de qualquer trabalho ser iniciado.</P>
       <P>A reparação só é realizada após confirmação expressa do cliente.</P>
-      <P>Se o orçamento não for aceite, o equipamento é devolvido e são faturados o diagnóstico e o transporte: <strong>40€ + IVA</strong> nas turbinas e <strong>60€ + IVA</strong> nos contra-ângulos, micromotores e peças de mão retas.</P>
+      <P>O diagnóstico é gratuito. Se o orçamento não for aceite, o equipamento é devolvido sem custos.</P>
+      <P>Em caso de recusas repetidas de orçamento ou de utilização abusiva deste serviço, a Dentassiste reserva-se o direito de cobrar o diagnóstico e o transporte, até 60€ + IVA por equipamento. Nesse caso, o cliente é informado antes da recolha.</P>
 
       <H2>5. Casos não reparáveis</H2>
       <P>Em alguns casos, o equipamento pode não ter solução técnica viável, nomeadamente por falta de peças, dano irreversível ou custo de reparação desproporcionado. Nestas situações, o cliente é informado e pode solicitar a devolução do equipamento no estado em que se encontra.</P>
@@ -36,7 +37,7 @@ export default function TermosPage() {
         "entupimentos ou falta de limpeza, que fazem parte da manutenção regular.",
       ]} />
       <P><strong>Como acionar a garantia:</strong> envie-nos um email para <a href="mailto:geral@dentassiste.com" className="font-semibold text-accent-dark underline-offset-2 hover:underline">geral@dentassiste.com</a>. Recolhemos o equipamento sem custo.</P>
-      <P>Se a avaria não estiver coberta pela garantia, é feito um diagnóstico e enviado orçamento. Se o orçamento não for aceite, aplica-se o previsto no ponto 4: são faturados o diagnóstico e o transporte (40€ + IVA nas turbinas).</P>
+      <P>Se a avaria não estiver coberta pela garantia, é feito um diagnóstico e enviado orçamento. Se o orçamento não for aceite, o equipamento é devolvido sem custos.</P>
       <P>Para os restantes equipamentos, a garantia é definida e comunicada no momento do orçamento.</P>
 
       <H2>7. Transporte e responsabilidade</H2>

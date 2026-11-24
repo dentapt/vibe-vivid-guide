@@ -71,7 +71,7 @@ export const SERVICES_LIST: { icon: LucideIcon; title: string; desc: string }[] 
   { icon: Stethoscope, title: "Peças de Mão Retas", desc: "Diagnóstico e reparação de peças de mão retas. Orçamento apresentado antes de qualquer intervenção." },
 ];
 
-export const BRANDS_LOGOS = ["KaVo", "NSK", "W&H", "Bien-Air", "Sirona", "MK-dent"];
+export const BRANDS_LOGOS = ["KaVo", "NSK", "W&H", "Bien-Air", "Sirona", "MK-dent", "Coxo"];
 
 export function getInstPrice(inst: Instrument, nTurbines: number): number | null {
   if (inst.type === "turbina") {

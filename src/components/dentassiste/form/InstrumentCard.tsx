@@ -164,7 +164,7 @@ export function InstrumentCard({ inst, index, nTurbines, onChange, onRemove, can
                 <Info className="mt-0.5 h-4 w-4 shrink-0" />
                 <span>
                   {inst.type === "micromotor" ? "Os micromotores" : "As peças de mão retas"} são orçamentados após
-                  diagnóstico técnico. Informamos o valor antes de iniciar qualquer intervenção.
+                  diagnóstico técnico. Informamos o valor antes de iniciar a intervenção.
                 </span>
               </div>
             </>

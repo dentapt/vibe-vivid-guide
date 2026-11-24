@@ -18,12 +18,12 @@ const featured = {
 };
 
 const rows = [
-  { label: "Turbina — marcas low-cost", price: "100€", sub: "+ IVA · por unidade", note: "Mesmo serviço · Soco, Coxo e equivalentes" },
+  { label: "Turbinas Coxo e Soco", price: "100€", sub: "+ IVA · por unidade", note: "Mesmo serviço incluído" },
   { label: "2 ou mais turbinas", price: "−10€", sub: "por unidade", note: "Desconto aplicado a todas as turbinas do pedido", isDiscount: true },
   { label: "Limpeza / Broca presa", price: "45€", sub: "+ IVA", note: "Turbinas e contra-ângulos" },
-  { label: "Contra-ângulo com avaria", price: "Orçamento", sub: "após diagnóstico", note: "Informamos o valor antes de intervir", isQuote: true },
-  { label: "Micromotor", price: "Orçamento", sub: "após diagnóstico", note: "Informamos o valor antes de intervir", isQuote: true },
-  { label: "Peça de Mão Reta", price: "Orçamento", sub: "após diagnóstico", note: "Informamos o valor antes de intervir", isQuote: true },
+  { label: "Contra-ângulo com avaria", price: "Orçamento", sub: "após diagnóstico", note: "Diagnóstico gratuito", isQuote: true },
+  { label: "Micromotor", price: "Orçamento", sub: "após diagnóstico", note: "Diagnóstico gratuito", isQuote: true },
+  { label: "Peça de Mão Reta", price: "Orçamento", sub: "após diagnóstico", note: "Diagnóstico gratuito", isQuote: true },
 ];
 
 export function PricingSection({ onForm }: PricingSectionProps) {
@@ -36,7 +36,7 @@ export function PricingSection({ onForm }: PricingSectionProps) {
             Sem surpresas
           </h2>
           <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-            Informamos o valor antes de iniciar qualquer intervenção.
+            Informamos o valor antes de iniciar a intervenção.
           </p>
         </div>
 
@@ -102,14 +102,6 @@ export function PricingSection({ onForm }: PricingSectionProps) {
             </div>
           ))}
         </div>
-
-        <p className="mx-auto mt-6 max-w-2xl text-center text-xs leading-relaxed text-muted-foreground">
-          Se não aceitar o orçamento, são faturados o diagnóstico e o transporte: 40€ + IVA nas turbinas e 60€ + IVA nos
-          contra-ângulos, micromotores e peças de mão retas.{" "}
-          <Link to="/termos#orcamento" className="font-semibold text-accent-dark underline-offset-2 hover:underline">
-            Ver condições
-          </Link>
-        </p>
 
         <div className="mt-12 text-center">
           <Button onClick={onForm} variant="hero" size="xl" className="group">
