@@ -9,10 +9,10 @@ const items = [
 export function ContactBar() {
   return (
     <section className="border-y border-border bg-card py-8">
-      <div className="container flex flex-wrap items-center justify-center gap-8">
+      <div className="container grid max-w-4xl grid-cols-1 gap-6 sm:grid-cols-3 sm:gap-8">
         {items.map(({ icon: Icon, title, sub, href }) => (
-          <div key={title} className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-accent-soft text-accent">
+          <div key={title} className="flex flex-col items-center gap-2 text-center sm:flex-row sm:justify-center sm:gap-3 sm:text-left">
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-accent-soft text-accent">
               <Icon className="h-4.5 w-4.5" />
             </div>
             <div>

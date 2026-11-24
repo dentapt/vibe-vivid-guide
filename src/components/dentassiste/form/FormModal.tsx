@@ -321,7 +321,7 @@ function EquipmentRow({
                 on ? "border-accent bg-accent-soft text-accent-dark" : "border-border bg-card text-foreground hover:border-accent/40",
               )}
             >
-              <Icon className={cn("h-4 w-4 shrink-0", on ? "text-accent" : "text-muted-foreground")} />
+              <Icon className={cn("h-5 w-5 shrink-0", on ? "text-accent" : "text-muted-foreground")} />
               {et.label}
             </button>
           );

@@ -1,7 +1,8 @@
 import {
-  Settings2, Cog, Wrench, Stethoscope, SprayCan, Truck, FileText, Search, ShieldCheck,
+  Settings2, Wrench, SprayCan, Truck, Search, ShieldCheck,
   type LucideIcon,
 } from "lucide-react";
+import { TurbinaIcon, ContraAnguloIcon, MicromotorIcon, PecaMaoRetaIcon } from "@/components/dentassiste/icons";
 
 export type Instrument = {
   id: number;
@@ -17,10 +18,10 @@ export type Instrument = {
 };
 
 export const EQUIPMENT_TYPES: { id: Instrument["type"]; label: string; icon: LucideIcon; highlight?: boolean }[] = [
-  { id: "turbina", label: "Turbina", icon: Settings2, highlight: true },
-  { id: "contra-angulo", label: "Contra-Ângulo", icon: Cog },
-  { id: "micromotor", label: "Micromotor", icon: Wrench },
-  { id: "peca-mao-reta", label: "Peça de Mão Reta", icon: Stethoscope },
+  { id: "turbina", label: "Turbina", icon: TurbinaIcon, highlight: true },
+  { id: "contra-angulo", label: "Contra-Ângulo", icon: ContraAnguloIcon },
+  { id: "micromotor", label: "Micromotor", icon: MicromotorIcon },
+  { id: "peca-mao-reta", label: "Peça de Mão Reta", icon: PecaMaoRetaIcon },
 ];
 
 export const TURBINE_BRANDS = [
@@ -63,12 +64,12 @@ export const MM_SYMPTOMS = ["Sem funcionamento", "Perda de potência", "Aquecime
 export const PM_SYMPTOMS = ["Sem rotação", "Rotação irregular", "Ruído anormal", "Vibração", "Aquecimento", "Peça solta", "Outro"];
 
 export const SERVICES_LIST: { icon: LucideIcon; title: string; desc: string }[] = [
-  { icon: Settings2, title: "Reparação de Turbinas", desc: "Substituição de rotor e limpeza completa, com componentes compatíveis de qualidade. Garantia de 12 meses incluída." },
-  { icon: Cog, title: "Contra-Ângulos", desc: "Limpeza, verificação e reparação. Avarias diagnosticadas antes de qualquer intervenção." },
-  { icon: Wrench, title: "Micromotores", desc: "Diagnóstico técnico e reparação. Orçamento apresentado antes de iniciar os trabalhos." },
+  { icon: TurbinaIcon, title: "Reparação de Turbinas", desc: "Substituição de rotor e limpeza completa, com componentes compatíveis de qualidade. Garantia de 12 meses incluída." },
+  { icon: ContraAnguloIcon, title: "Contra-Ângulos", desc: "Limpeza, verificação e reparação. Avarias diagnosticadas antes de qualquer intervenção." },
+  { icon: MicromotorIcon, title: "Micromotores", desc: "Diagnóstico técnico e reparação. Orçamento apresentado antes de iniciar os trabalhos." },
   { icon: Truck, title: "Recolha e entrega incluídas", desc: "Nas reparações de turbinas, a recolha na clínica e a entrega após reparação estão incluídas no preço." },
   { icon: Search, title: "Orçamento antes da intervenção", desc: "Nunca iniciamos uma reparação sem informar o valor. Sem surpresas na fatura." },
-  { icon: Stethoscope, title: "Peças de Mão Retas", desc: "Diagnóstico e reparação de peças de mão retas. Orçamento apresentado antes de qualquer intervenção." },
+  { icon: PecaMaoRetaIcon, title: "Peças de Mão Retas", desc: "Diagnóstico e reparação de peças de mão retas. Orçamento apresentado antes de qualquer intervenção." },
 ];
 
 export const BRANDS_LOGOS = ["KaVo", "NSK", "W&H", "Bien-Air", "Sirona", "MK-dent", "Coxo"];
